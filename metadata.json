@@ -1,0 +1,7 @@
+{
+  "name": "CloudBook Club",
+  "description": "A cloud-enabled online book-club platform for students and educators, focusing on African and Nigerian reading communities.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

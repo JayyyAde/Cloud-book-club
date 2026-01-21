@@ -7,7 +7,7 @@ export const MOCK_BOOKS: Book[] = [
     title: 'Things Fall Apart',
     author: 'Chinua Achebe',
     coverImage: 'https://picsum.photos/seed/thingsfallapart/400/600',
-    description: 'A classic of African literature, focusing on the life of Okonkwo and the impact of colonialism in Nigeria.',
+    description: 'A classic of African literature, focusing on the life of Okonkwo and the profound impact of cultural intersection in Nigeria.',
     totalPages: 209,
     category: 'African Classic'
   },
@@ -16,7 +16,7 @@ export const MOCK_BOOKS: Book[] = [
     title: 'Half of a Yellow Sun',
     author: 'Chimamanda Ngozi Adichie',
     coverImage: 'https://picsum.photos/seed/halfyellowsun/400/600',
-    description: 'Set during the Biafran War, it explores the lives of several people caught in the conflict.',
+    description: 'A modern masterpiece exploring the lives of characters caught in the complex web of struggle and identity.',
     totalPages: 443,
     category: 'Historical Fiction'
   },
@@ -25,7 +25,7 @@ export const MOCK_BOOKS: Book[] = [
     title: 'Stay With Me',
     author: 'Ayobami Adebayo',
     coverImage: 'https://picsum.photos/seed/staywithme/400/600',
-    description: 'A heart-wrenching novel about marriage, family, and the power of love in 1980s Nigeria.',
+    description: 'A heart-wrenching novel about marriage, family, and the power of love in the modern Nigerian landscape.',
     totalPages: 260,
     category: 'Contemporary'
   }

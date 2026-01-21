@@ -10,10 +10,26 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
+            color: #1a1a1a;
         }
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
+        }
+        /* Prevent layout shift/flash */
+        #root:empty {
+            min-height: 100vh;
+            background-color: #fdfdfd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #root:empty::after {
+            content: 'Loading CloudBook Club...';
+            font-family: 'Playfair Display', serif;
+            color: #064e3b;
+            font-size: 1.25rem;
+            font-weight: 600;
         }
     </style>
 <script type="importmap">
@@ -30,5 +46,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- Entry point for the React application -->
+    <script type="module" src="index.tsx"></script>
 </body>
 </html>

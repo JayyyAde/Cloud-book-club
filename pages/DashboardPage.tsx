@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../App';
-import { MOCK_CLUBS, MOCK_BOOKS } from '../constants';
-import { ReadingProgress, Book, BookClub } from '../types';
-import { getBookRecommendations } from '../services/geminiService';
+import { useAuth } from '../App.tsx';
+import { MOCK_CLUBS, MOCK_BOOKS } from '../constants.tsx';
+import { ReadingProgress, Book, BookClub } from '../types.ts';
+import { getBookRecommendations } from '../services/geminiService.ts';
 
 const DashboardPage: React.FC = () => {
   const { user } = useAuth();
@@ -43,9 +43,7 @@ const DashboardPage: React.FC = () => {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Main Content Area */}
           <div className="lg:col-span-8 space-y-12">
-            {/* Active Reading Section */}
             <section>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold text-emerald-900 uppercase tracking-widest flex items-center">
@@ -81,7 +79,6 @@ const DashboardPage: React.FC = () => {
               </div>
             </section>
 
-            {/* Clubs Grid Section */}
             <section>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold text-emerald-900 uppercase tracking-widest flex items-center">
@@ -110,9 +107,7 @@ const DashboardPage: React.FC = () => {
             </section>
           </div>
 
-          {/* Sidebar Area */}
           <div className="lg:col-span-4 space-y-8">
-            {/* AI Guru Section */}
             <section className="bg-emerald-900 text-white rounded-3xl shadow-xl p-8 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-800 rounded-full -mr-12 -mt-12 opacity-50"></div>
               <h2 className="text-xl font-bold mb-6 font-serif flex items-center">
@@ -138,7 +133,6 @@ const DashboardPage: React.FC = () => {
               )}
             </section>
 
-            {/* Quick Stats Card */}
             <section className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
               <h2 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6 border-b border-gray-50 pb-4">Personal Metrics</h2>
               <div className="grid grid-cols-2 gap-4">
@@ -149,12 +143,6 @@ const DashboardPage: React.FC = () => {
                 <div className="p-4 bg-gray-50 rounded-2xl text-center">
                   <p className="text-2xl font-bold text-emerald-900 font-serif">04</p>
                   <p className="text-[10px] text-gray-400 font-bold uppercase mt-1">Cycles</p>
-                </div>
-              </div>
-              <div className="mt-8 pt-6 border-t border-gray-50">
-                <div className="flex items-center text-xs text-gray-500 font-medium">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 mr-2"></div>
-                  System Sync: Just now
                 </div>
               </div>
             </section>

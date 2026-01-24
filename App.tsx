@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { HashRouter, Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom';
-import { User, AuthState, UserRole } from './types';
-import { MOCK_USER } from './constants';
+import { User, AuthState, UserRole } from './types.ts';
+import { MOCK_USER } from './constants.tsx';
 
 // --- Auth Context ---
 interface AuthContextType extends AuthState {
@@ -20,7 +20,6 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   });
 
   const login = (email: string, pass: string) => {
-    // Simple mock login
     const user = { ...MOCK_USER, email };
     const state = { user, isAuthenticated: true };
     setAuth(state);
@@ -56,7 +55,6 @@ export const useAuth = () => {
 const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -73,13 +71,13 @@ const Navbar: React.FC = () => {
               </div>
             )}
           </div>
-          <div className="hidden lg:flex lg:items-center lg:space-x-6">
+          <div className="flex items-center space-x-6">
             {isAuthenticated ? (
               <>
                 <Link to="/profile" className="flex items-center space-x-3 group">
-                  <div className="text-right">
+                  <div className="text-right hidden sm:block">
                     <p className="text-sm font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">{user?.name}</p>
-                    <p className="text-[10px] text-gray-400 uppercase tracking-widest leading-none">Member</p>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest leading-none">2026 Scholar</p>
                   </div>
                   <img className="h-10 w-10 rounded-full ring-2 ring-emerald-50" src={user?.avatar} alt="" />
                 </Link>
@@ -97,62 +95,22 @@ const Navbar: React.FC = () => {
               </div>
             )}
           </div>
-          
-          {/* Mobile menu button */}
-          <div className="flex items-center lg:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-50 py-4 px-4 space-y-4 shadow-xl">
-          {isAuthenticated ? (
-            <>
-              <Link to="/dashboard" className="block text-gray-700 font-bold text-sm" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</Link>
-              <Link to="/clubs" className="block text-gray-700 font-bold text-sm" onClick={() => setIsMobileMenuOpen(false)}>Clubs</Link>
-              <Link to="/profile" className="block text-gray-700 font-bold text-sm" onClick={() => setIsMobileMenuOpen(false)}>Profile</Link>
-              <button 
-                onClick={() => { logout(); navigate('/'); setIsMobileMenuOpen(false); }}
-                className="w-full text-left text-red-600 font-bold text-sm pt-4 border-t border-gray-50"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <div className="space-y-4">
-              <Link to="/login" className="block text-gray-700 font-bold text-sm" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
-              <Link to="/register" className="block bg-emerald-800 text-white text-center py-3 rounded-xl font-bold text-sm" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Link>
-            </div>
-          )}
-        </div>
-      )}
     </nav>
   );
 };
 
-// --- Pages (Placeholders & Structural logic) ---
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
-import ClubListPage from './pages/ClubListPage';
-import ClubDetailPage from './pages/ClubDetailPage';
-import ProfilePage from './pages/ProfilePage';
-import AdminManagementPage from './pages/AdminManagementPage';
-import DiscussionPage from './pages/DiscussionPage';
+// --- Pages ---
+import LandingPage from './pages/LandingPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
+import RegisterPage from './pages/RegisterPage.tsx';
+import DashboardPage from './pages/DashboardPage.tsx';
+import ClubListPage from './pages/ClubListPage.tsx';
+import ClubDetailPage from './pages/ClubDetailPage.tsx';
+import ProfilePage from './pages/ProfilePage.tsx';
+import AdminManagementPage from './pages/AdminManagementPage.tsx';
+import DiscussionPage from './pages/DiscussionPage.tsx';
 
 const App: React.FC = () => {
   return (
@@ -178,11 +136,6 @@ const App: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 text-center">
               <p className="text-xl font-bold text-emerald-900 font-serif mb-4">CloudBookClub</p>
               <p className="text-gray-400 text-sm mb-6">Built to celebrate and analyze African literature collectively.</p>
-              <div className="flex justify-center space-x-6 text-gray-400 text-xs uppercase tracking-widest mb-8">
-                <a href="#" className="hover:text-emerald-700 transition-colors">Privacy</a>
-                <a href="#" className="hover:text-emerald-700 transition-colors">Terms</a>
-                <a href="#" className="hover:text-emerald-700 transition-colors">Support</a>
-              </div>
               <p className="text-gray-400 text-[10px] uppercase tracking-[0.2em]">
                 &copy; 2026 CloudBook Club Platform. Lagos, Nigeria.
               </p>
